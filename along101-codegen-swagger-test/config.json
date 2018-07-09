@@ -1,0 +1,18 @@
+{
+  "groupId": "com.along101.test",
+  "artifactId": "test-codegen-client",
+  "artifactVersion": "1.0-SNAPSHOT",
+  "basePackage": "com.along101.test",
+  "apiPackage": "com.along101.test.api",
+  "modelPackage": "com.along101.test.model",
+  "configPackage": "com.along101.test.config",
+  "skipOverwrite": true,
+  "additionalProperties": {
+    "appId":"1000100001",
+    "serviceName":"petstore",
+    "soaClientVersion": "0.0.2",
+    "dateLibrary": "joda",
+    "remoteUrl": "http://localhost:8080",
+    "dateFormat": "yyyy-MM-dd HH:mm:ss"
+  }
+}

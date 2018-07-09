@@ -1,0 +1,50 @@
+package {{package}};
+
+import {{basePackage}}.SpringBootApplicationTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+{{#imports}}import {{import}};
+{{/imports}}
+import org.junit.runner.RunWith;
+import org.junit.Test;
+
+{{^fullJavaUtil}}
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+{{/fullJavaUtil}}
+
+/**
+ * API tests for {{classname}}
+ */
+{{#vendorExtensions}}{{#x-appId}}//appId:{{x-appId}}{{/x-appId}}{{/vendorExtensions}}
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = SpringBootApplicationTest.class)
+public class {{classname}}Test {
+
+    @Autowired
+    private   {{classname}} api ;
+
+    {{#operations}}{{#operation}}
+    /**
+     * {{summary}}
+     *
+     * {{notes}}
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void {{operationId}}Test() throws Exception {
+        {{#allParams}}
+        {{{dataType}}} {{paramName}} = null;
+        {{/allParams}}
+        {{#returnType}}ResponseEntity<{{>returnTypes}}> response = {{/returnType}}api.{{operationId}}({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
+        {{#returnType}}System.out.println(response.getBody());{{/returnType}}
+        // TODO: test validations
+    }
+    {{/operation}}{{/operations}}
+}

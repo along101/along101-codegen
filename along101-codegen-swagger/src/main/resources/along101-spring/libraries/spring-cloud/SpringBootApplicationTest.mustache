@@ -1,0 +1,17 @@
+package {{basePackage}};
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+
+
+@EnableFeignClients
+@SpringBootApplication
+@ComponentScan(basePackages = { "{{basePackage}}", "{{apiPackage}}" })
+public class SpringBootApplicationTest {
+
+    public static void main(String[] args) throws Exception {
+        new SpringApplication(SpringBootApplication.class).run(args);
+    }
+}
